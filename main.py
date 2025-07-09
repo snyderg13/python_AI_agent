@@ -5,12 +5,17 @@ from google import genai
 from google.genai import types
 
 def main():
-    if len(sys.argv) != 2:
+    if len(sys.argv) < 2:
         print("Error: No prompt provided")
         sys.exit(1)
 
+    verbose = False
+    if len(sys.argv) == 3:
+        if sys.argv[2] == "--verbose":
+            verbose = True
+
     user_prompt = sys.argv[1]
-    print(f"User-provided prompt: {user_prompt}")
+
     messages = [
         types.Content(role="user", parts=[types.Part(text=user_prompt)]),
     ]
@@ -27,8 +32,11 @@ def main():
 
     prompt_tokens = response.usage_metadata.prompt_token_count
     response_tokens = response.usage_metadata.candidates_token_count
-    print(f"Prompt tokens: {prompt_tokens}")
-    print(f"Response tokens: {response_tokens}")
+
+    if verbose:
+        print(f"User prompt: {user_prompt}")
+        print(f"Prompt tokens: {prompt_tokens}")
+        print(f"Response tokens: {response_tokens}")
 
 
 
