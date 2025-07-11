@@ -1,1 +1,1 @@
-AI agent using Google Gemini 
+AI agent using Google Gemini API 
