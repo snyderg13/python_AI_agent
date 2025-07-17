@@ -7,3 +7,6 @@ class TestGetFilesInfo(unittest.TestCase):
     
     def test_funcs_dir(self):
         result = get_files_info("functions", ".")
+
+if __name__ == "__main__":
+    unittest.main()
