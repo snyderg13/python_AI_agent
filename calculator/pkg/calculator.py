@@ -34,6 +34,7 @@ class Calculator:
                 ):
                     self._apply_operator(operators, values)
                 operators.append(token)
+                print(f"operators = {operators}")
             else:
                 try:
                     values.append(float(token))
